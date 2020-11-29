@@ -1,0 +1,18 @@
+---
+title: "Table scrape"
+output: html_notebook
+---
+
+Load the libraries that will do the hard work of scraping a HTMTL table
+```{r}
+library(tidyverse)
+library(rvest)
+content <- read_html("https://www.visionofbritain.org.uk/unit/10084647/cube/HOUS_DENSITY_GEN")
+tables <- content %>% html_table(fill = TRUE)
+```
+The scrape created a list of two tables - one of which is the one I want. Now I create a dataframe of just that table.
+```{r}
+first_table <- tables[[1]]
+```
+
+
